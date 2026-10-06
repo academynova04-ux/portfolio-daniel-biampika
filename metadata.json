@@ -1,0 +1,8 @@
+{
+  "name": "Daniel Biampika — Portfolio",
+  "description": "Portfolio de Daniel Biampika, développeur web, passionné par l'intelligence artificielle, le design UI/UX et la création digitale.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
