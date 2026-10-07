@@ -506,6 +506,18 @@ export const PROJECTS: Project[] = [
     link_url: "https://relchie-market.vercel.app/",
     status: "completed",
     metadata: { technologies: ["React", "Marketplace", "Ventes"] }
+  },
+  {
+    id: 132,
+    category: "project",
+    slug: "koumou-hospitality-management",
+    title: "KOUMOU Hospitality Management",
+    subtitle: "Hôtellerie · Management & POS",
+    description: "Plateforme hôtelière et point de vente haut de gamme avec gestion des commandes, stocks et analyses en temps réel.",
+    image_url: "/images/projects/agentic-intelligence-models.jpg",
+    link_url: "https://9np49d-1kzhminfm-intelligence-agentic-models.vercel.app/",
+    status: "in-development",
+    metadata: { technologies: ["React", "Hospitality", "Analytics", "SaaS"] }
   }
 ];
 
