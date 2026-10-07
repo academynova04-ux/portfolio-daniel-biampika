@@ -349,3 +349,905 @@
     width: 100%;
   }
 }
+
+/* ==========================================================================
+   MOBILE-FIRST GLOBAL RESPONSIVE OPTIMIZATIONS
+   Strictly covers screens from 320px, 360px, 390px, 414px, 430px up to tablets.
+   Desktop layout is preserved intact.
+   ========================================================================== */
+
+/* Anti-Horizontal-Overflow Safety */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* --------------------------------------------------------------------------
+   TABLET ADAPTATIONS (max-width: 768px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  :root {
+    --container-width: 100%;
+  }
+
+  .section {
+    padding: 72px 24px;
+  }
+
+  .projects-section {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .section-heading {
+    margin-bottom: 36px;
+    gap: 12px;
+  }
+
+  .section-heading h2 {
+    font-size: clamp(30px, 5vw, 42px);
+    margin-bottom: 12px;
+  }
+
+  .project-list-modern {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .project-preview {
+    height: 220px;
+  }
+
+  .creation-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 28px;
+  }
+
+  .expertise-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 28px;
+  }
+
+  .online-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-top: 28px;
+  }
+
+  .service-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   MOBILE STANDARD (max-width: 640px)
+   Covers 430px (iPhone 14/15 Pro Max), 414px (iPhone 11/XR), 390px (iPhone 12/13/14)
+   -------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  /* Navigation Topbar */
+  .topbar {
+    width: calc(100% - 16px);
+    height: 52px;
+    padding: 0 14px;
+    top: 8px;
+    border-radius: 14px;
+  }
+
+  .logo {
+    font-size: 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .icon-button, .menu-button {
+    width: 34px;
+    height: 34px;
+  }
+
+  .icon-button svg, .menu-button svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .mobile-menu {
+    padding: 24px 18px;
+  }
+
+  .mobile-menu > button {
+    width: 38px;
+    height: 38px;
+    top: 16px;
+    right: 16px;
+  }
+
+  .mobile-logo {
+    font-size: 22px;
+  }
+
+  .mobile-menu nav {
+    margin-top: 60px;
+  }
+
+  .mobile-menu nav a {
+    font-size: 18px;
+    padding: 14px 0;
+  }
+
+  /* Global Section Spacings & Typography */
+  .section {
+    padding: 56px 16px;
+    max-width: 100%;
+  }
+
+  .projects-section {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .section-label {
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    gap: 8px;
+    margin-bottom: 12px !important;
+  }
+
+  .section-label i {
+    width: 20px;
+  }
+
+  .section-heading {
+    margin-bottom: 28px;
+    gap: 10px;
+  }
+
+  .section-heading h2,
+  .about-lead h2,
+  .contact-copy h2,
+  .gallery-header h2 {
+    font-size: clamp(25px, 6.5vw, 32px) !important;
+    line-height: 1.15;
+    margin-bottom: 10px;
+    letter-spacing: -0.04em;
+  }
+
+  .section-lead,
+  .section-heading > p {
+    font-size: 12.5px;
+    line-height: 1.55;
+    max-width: 100%;
+  }
+
+  /* Hero Section Mobile Compact */
+  .hero {
+    min-height: auto;
+    padding: 88px 16px 44px;
+    gap: 20px;
+  }
+
+  .hero-copy {
+    max-width: 100%;
+  }
+
+  .hero .eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    gap: 6px;
+  }
+
+  .hero h1 {
+    font-size: clamp(30px, 8.5vw, 42px);
+    line-height: 1.1;
+    margin: 14px 0 12px;
+    letter-spacing: -0.04em;
+  }
+
+  .hero .hero-rotator {
+    height: 140px;
+    min-height: 140px;
+    margin: 12px 0 10px !important;
+    padding-top: 0;
+  }
+
+  .hero .hero-rotator > span {
+    font-size: clamp(24px, 6.8vw, 32px);
+    line-height: 1.15;
+  }
+
+  .hero .hero-rotator > span.is-long {
+    font-size: clamp(20px, 5.8vw, 26px);
+  }
+
+  .hero-intro {
+    font-size: 13.5px;
+    line-height: 1.55;
+    margin-top: 6px;
+  }
+
+  .hero-expertises-bar {
+    gap: 6px 8px;
+    margin: 14px 0 16px;
+  }
+
+  .expertise-pill {
+    padding: 5px 10px;
+    font-size: 9.5px;
+    gap: 5px;
+  }
+
+  .expertise-pill svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .hero-cta {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    margin-top: 22px;
+    width: 100%;
+  }
+
+  .btn-primary {
+    padding: 12px 18px;
+    font-size: 12px;
+    border-radius: 10px;
+    justify-content: center;
+    width: 100%;
+    gap: 8px;
+  }
+
+  .btn-text,
+  .hero .contact-link {
+    justify-content: center;
+    text-align: center;
+    font-size: 11.5px;
+    padding: 9px 12px;
+    border-radius: 9px;
+  }
+
+  .hero-visual {
+    width: 100%;
+    max-width: 320px;
+    margin: 16px auto 0;
+  }
+
+  .portrait-frame {
+    height: clamp(280px, 75vw, 360px);
+    max-height: 380px;
+  }
+
+  .floating-chip {
+    padding: 8px 10px;
+    border-radius: 10px;
+    gap: 8px;
+  }
+
+  .floating-chip span {
+    font-size: 8px;
+  }
+
+  .floating-chip b {
+    font-size: 10px;
+  }
+
+  .floating-chip svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .chip-code {
+    top: 15%;
+    left: -6px;
+  }
+
+  .chip-design {
+    bottom: 10%;
+    right: -6px;
+  }
+
+  .hero-proof {
+    margin-top: 14px;
+    font-size: 9px;
+    gap: 8px 12px;
+  }
+
+  .hero-proof b {
+    font-size: 13px;
+  }
+
+  /* Projects List Mobile */
+  .project-list-modern {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .project-card-modern {
+    border-radius: 16px;
+  }
+
+  .project-preview {
+    height: 180px;
+    background: #0f100d;
+  }
+
+  .project-index {
+    top: 10px;
+    left: 10px;
+    padding: 5px 8px;
+    font-size: 9px;
+    border-radius: 7px;
+  }
+
+  .project-status-badge {
+    top: 10px;
+    right: 10px;
+    padding: 3px 8px;
+    font-size: 8.5px;
+  }
+
+  .project-info-modern {
+    padding: 14px 14px 16px;
+    gap: 12px;
+  }
+
+  .project-info-modern > div > p:first-child {
+    font-size: 8.5px;
+    letter-spacing: 0.1em;
+  }
+
+  .project-info-modern h3 {
+    font-size: 16px;
+    margin: 4px 0 6px;
+    line-height: 1.25;
+  }
+
+  .project-description {
+    font-size: 11.5px;
+    line-height: 1.5;
+    max-width: 100%;
+  }
+
+  .tags {
+    gap: 5px;
+    margin-top: 10px;
+  }
+
+  .tags span {
+    padding: 4px 8px;
+    font-size: 8.5px;
+    border-radius: 99px;
+  }
+
+  .project-info-modern .project-links {
+    margin-top: 4px;
+    width: 100%;
+  }
+
+  .project-info-modern .project-links a {
+    width: 100%;
+    justify-content: center;
+    padding: 9px 12px;
+    font-size: 11px;
+    border-radius: 10px;
+  }
+
+  /* Creation Section Mobile */
+  .creation-section {
+    padding-bottom: 60px;
+  }
+
+  .creation-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 22px;
+  }
+
+  .creation-card {
+    border-radius: 16px;
+  }
+
+  .creation-image-wrapper {
+    height: 165px;
+  }
+
+  .creation-body {
+    padding: 14px;
+    gap: 6px;
+  }
+
+  .creation-body h3 {
+    font-size: 15px;
+  }
+
+  .creation-body p {
+    font-size: 11.5px;
+    line-height: 1.5;
+  }
+
+  /* Online Presence Mobile */
+  .online-section {
+    padding-bottom: 60px;
+  }
+
+  .online-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 22px;
+  }
+
+  .online-card {
+    padding: 16px 14px;
+    border-radius: 14px;
+    min-height: auto;
+    gap: 8px;
+  }
+
+  .online-card-top {
+    margin-bottom: 4px;
+  }
+
+  .online-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+  }
+
+  .online-card h3 {
+    font-size: 15px;
+  }
+
+  .online-card p {
+    font-size: 11.5px;
+    line-height: 1.5;
+  }
+
+  .online-cta {
+    font-size: 10.5px;
+    margin-top: 6px;
+  }
+
+  /* Expertise Section Mobile */
+  .expertise-section {
+    padding-bottom: 60px;
+  }
+
+  .expertise-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 22px;
+  }
+
+  .expertise-card {
+    padding: 18px 14px;
+    border-radius: 16px;
+  }
+
+  .expertise-card-header {
+    margin-bottom: 12px;
+  }
+
+  .expertise-index {
+    font-size: 18px;
+  }
+
+  .expertise-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+  }
+
+  .expertise-card h3 {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .expertise-techs {
+    gap: 5px;
+  }
+
+  .expertise-techs span {
+    padding: 4px 8px;
+    font-size: 9.5px;
+  }
+
+  /* Services Section Mobile */
+  .services-section {
+    padding-bottom: 60px;
+  }
+
+  .service-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .service-grid article {
+    padding: 20px 16px;
+    border-radius: 16px;
+  }
+
+  .service-number {
+    font-size: 20px;
+    top: 14px;
+    right: 16px;
+  }
+
+  .service-grid article > svg {
+    width: 22px;
+    height: 22px;
+    margin: 16px 0 10px;
+  }
+
+  .service-grid h3 {
+    font-size: 16px;
+  }
+
+  .service-grid p {
+    font-size: 11.5px;
+    line-height: 1.55;
+  }
+
+  .service-grid ul {
+    margin-top: 14px;
+    padding-top: 14px;
+  }
+
+  .service-grid li {
+    font-size: 10px;
+    margin-top: 7px;
+  }
+
+  /* About Section Mobile */
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-top: 24px;
+  }
+
+  .about-lead p {
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+
+  .about-lead .inline-link {
+    margin-top: 16px;
+    font-size: 11.5px;
+  }
+
+  .skills-panel {
+    padding: 18px 14px;
+    border-radius: 16px;
+  }
+
+  .skills-head {
+    padding-bottom: 14px;
+    font-size: 9px;
+  }
+
+  .skills-intro {
+    font-size: 11.5px;
+    margin-top: 12px;
+  }
+
+  .skill-groups {
+    gap: 14px;
+    padding: 14px 0 4px;
+  }
+
+  .skill-group-label {
+    font-size: 8.5px;
+    margin-bottom: 6px;
+  }
+
+  .skill-cloud {
+    gap: 6px;
+    padding: 12px 0;
+  }
+
+  .skill-cloud span {
+    padding: 5px 9px;
+    font-size: 9.5px;
+  }
+
+  .facts {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding-top: 14px;
+  }
+
+  .facts div {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .facts b,
+  .facts > div > svg {
+    font-size: 17px;
+  }
+
+  .facts span {
+    font-size: 8px;
+  }
+
+  /* Gallery Mobile */
+  .gallery-section {
+    padding: 56px 16px;
+  }
+
+  .gallery-header {
+    text-align: left;
+    margin-bottom: 24px;
+  }
+
+  .gallery-lead {
+    font-size: 12.5px;
+    line-height: 1.55;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .gallery-item {
+    min-height: 190px !important;
+    border-radius: 14px;
+  }
+
+  /* Contact Section Mobile */
+  .contact-section {
+    padding: 56px 16px 24px;
+  }
+
+  .contact-top {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .contact-copy > p {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .contact-copy h2 {
+    margin-top: 16px;
+  }
+
+  .contact-details {
+    margin: 20px 0;
+    gap: 10px;
+  }
+
+  .contact-details a {
+    font-size: 11.5px;
+    gap: 10px;
+  }
+
+  .socials {
+    gap: 8px;
+  }
+
+  .socials a {
+    width: 36px;
+    height: 36px;
+  }
+
+  .socials svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .contact-form {
+    padding: 20px 16px;
+    border-radius: 16px;
+  }
+
+  .contact-form label {
+    margin-bottom: 14px;
+    font-size: 8.5px;
+    gap: 6px;
+  }
+
+  .field-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    padding: 8px 0;
+    font-size: 12.5px;
+  }
+
+  .submit-button {
+    padding: 12px;
+    font-size: 11.5px;
+    border-radius: 10px;
+  }
+
+  .footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    font-size: 8px;
+    gap: 12px;
+  }
+
+  .footer-logo {
+    font-size: 16px;
+  }
+
+  /* Development Modal Mobile */
+  .dev-modal-backdrop {
+    padding: 12px;
+  }
+
+  .dev-modal-card {
+    width: 100%;
+    max-width: 380px;
+    padding: 22px 16px 18px;
+    border-radius: 16px;
+  }
+
+  .dev-modal-icon {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 12px;
+  }
+
+  .dev-modal-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .dev-modal-title {
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+
+  .dev-modal-message {
+    font-size: 12px;
+    line-height: 1.5;
+    margin-bottom: 18px;
+  }
+
+  .dev-modal-actions {
+    flex-direction: column-reverse;
+    gap: 8px;
+  }
+
+  .dev-modal-btn {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 11.5px;
+    border-radius: 10px;
+  }
+
+  .dev-modal-close {
+    top: 10px;
+    right: 10px;
+    width: 28px;
+    height: 28px;
+  }
+
+  /* Letter Scan Loader Mobile */
+  .loader-wrapper {
+    font-size: 1.25rem;
+    letter-spacing: 0.04em;
+    height: 64px;
+    padding: 0 8px;
+  }
+
+  .loader-letter.space {
+    width: 0.3em;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   ULTRA-COMPACT MOBILE (max-width: 380px)
+   Covers 320px (iPhone SE 1st gen, older compact screens), 360px (Galaxy compact)
+   -------------------------------------------------------------------------- */
+@media (max-width: 380px) {
+  .section {
+    padding: 44px 12px;
+  }
+
+  .projects-section {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .topbar {
+    width: calc(100% - 12px);
+    padding: 0 10px;
+    height: 48px;
+  }
+
+  .logo {
+    font-size: 15px;
+  }
+
+  .hero {
+    padding: 76px 12px 36px;
+  }
+
+  .hero h1 {
+    font-size: 26px;
+  }
+
+  .hero .hero-rotator {
+    height: 125px;
+    min-height: 125px;
+  }
+
+  .hero .hero-rotator > span {
+    font-size: 21px;
+  }
+
+  .hero .hero-rotator > span.is-long {
+    font-size: 18px;
+  }
+
+  .portrait-frame {
+    height: 250px;
+  }
+
+  .floating-chip {
+    padding: 6px 8px;
+  }
+
+  .floating-chip b {
+    font-size: 9px;
+  }
+
+  .floating-chip span {
+    font-size: 7.5px;
+  }
+
+  .project-preview {
+    height: 155px;
+  }
+
+  .project-info-modern {
+    padding: 12px 10px 14px;
+  }
+
+  .project-info-modern h3 {
+    font-size: 15px;
+  }
+
+  .project-description {
+    font-size: 11px;
+  }
+
+  .loader-wrapper {
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+    height: 52px;
+    padding: 0 4px;
+  }
+
+  .dev-modal-card {
+    padding: 18px 12px 16px;
+    border-radius: 14px;
+  }
+
+  .dev-modal-title {
+    font-size: 14px;
+  }
+
+  .dev-modal-message {
+    font-size: 11.5px;
+  }
+
+  .dev-modal-btn {
+    padding: 9px 12px;
+    font-size: 11px;
+  }
+}
