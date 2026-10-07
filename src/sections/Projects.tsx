@@ -7,17 +7,24 @@ import { PROJECTS, FADE_UP, Project } from '../data';
 export function Projects() {
   const [pendingProject, setPendingProject] = useState<Project | null>(null);
 
-  // Close modal with Escape key
+  // Close modal with Escape key & lock body scroll while modal is active
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        setPendingProject(null);
-      }
-    };
     if (pendingProject) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') {
+          setPendingProject(null);
+        }
+      };
+
       window.addEventListener('keydown', handleKeyDown);
+      return () => {
+        document.body.style.overflow = originalOverflow;
+        window.removeEventListener('keydown', handleKeyDown);
+      };
     }
-    return () => window.removeEventListener('keydown', handleKeyDown);
   }, [pendingProject]);
 
   const handleProjectClick = (e: React.MouseEvent, proj: Project) => {
@@ -109,10 +116,10 @@ export function Projects() {
           >
             <motion.div
               className="dev-modal-card"
-              initial={{ opacity: 0, scale: 0.92, y: 14 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.92, y: 14 }}
-              transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+              initial={{ opacity: 0, scale: 0.94 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.94 }}
+              transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
               onClick={(e) => e.stopPropagation()}
             >
               <button
@@ -125,7 +132,11 @@ export function Projects() {
               </button>
 
               <div className="dev-modal-icon">
-                <AlertCircle size={28} />
+                <AlertCircle size={26} />
+              </div>
+
+              <div className="dev-modal-project-name">
+                {pendingProject.title}
               </div>
 
               <h3 id="dev-modal-title" className="dev-modal-title">

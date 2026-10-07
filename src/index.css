@@ -203,22 +203,25 @@
   position: fixed;
   inset: 0;
   z-index: 9999;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 20px;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.78);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+  overflow-y: auto;
 }
 
 .dev-modal-card {
   position: relative;
   width: min(480px, 100%);
+  margin: auto;
   background: var(--surface, #171814);
   border: 1px solid var(--line, rgba(255, 255, 255, 0.12));
   border-radius: 22px;
-  padding: 32px 28px 28px;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 32px rgba(183, 71, 42, 0.15);
+  padding: 30px 26px 26px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65), 0 0 32px rgba(183, 71, 42, 0.15);
   text-align: center;
   color: var(--text, #F4F2EB);
 }
@@ -246,16 +249,30 @@
 }
 
 .dev-modal-icon {
-  width: 56px;
-  height: 56px;
-  margin: 0 auto 16px;
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 14px;
   border-radius: 50%;
-  background: rgba(183, 71, 42, 0.12);
-  border: 1px solid rgba(183, 71, 42, 0.25);
+  background: rgba(183, 71, 42, 0.14);
+  border: 1px solid rgba(183, 71, 42, 0.3);
   color: var(--terracotta, #B7472A);
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.dev-modal-project-name {
+  display: inline-block;
+  padding: 4px 12px;
+  margin-bottom: 12px;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--terracotta, #B7472A);
+  background: rgba(183, 71, 42, 0.12);
+  border: 1px solid rgba(183, 71, 42, 0.22);
+  border-radius: 999px;
 }
 
 .dev-modal-title {
@@ -264,14 +281,14 @@
   font-weight: 700;
   margin: 0 0 12px;
   color: var(--text, #F4F2EB);
+  letter-spacing: -0.01em;
 }
 
 .dev-modal-message {
   font-size: 14px;
-  line-height: 1.55;
+  line-height: 1.6;
   color: var(--muted, #A0A096);
   margin: 0 0 24px;
-  font-style: italic;
 }
 
 .dev-modal-actions {
@@ -282,6 +299,7 @@
 
 .dev-modal-btn {
   flex: 1;
+  min-height: 44px;
   padding: 12px 18px;
   font-family: 'Sora', sans-serif;
   font-size: 13px;
@@ -292,6 +310,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
+  text-decoration: none;
   transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
 }
 
@@ -314,6 +333,7 @@
 }
 
 .dev-modal-btn.btn-confirm:hover {
+  background: var(--terracotta-hover, #d25533);
   transform: translateY(-1px);
   box-shadow: 0 12px 24px rgba(183, 71, 42, 0.45);
 }
@@ -1091,19 +1111,25 @@ html, body {
   .dev-modal-card {
     width: 100%;
     max-width: 380px;
-    padding: 22px 16px 18px;
-    border-radius: 16px;
+    padding: 22px 18px 20px;
+    border-radius: 18px;
   }
 
   .dev-modal-icon {
     width: 44px;
     height: 44px;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
 
   .dev-modal-icon svg {
     width: 22px;
     height: 22px;
+  }
+
+  .dev-modal-project-name {
+    font-size: 10.5px;
+    padding: 3px 10px;
+    margin-bottom: 8px;
   }
 
   .dev-modal-title {
@@ -1118,14 +1144,16 @@ html, body {
   }
 
   .dev-modal-actions {
-    flex-direction: column-reverse;
-    gap: 8px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
   }
 
   .dev-modal-btn {
-    width: 100%;
-    padding: 10px 14px;
-    font-size: 11.5px;
+    flex: 1;
+    min-height: 42px;
+    padding: 10px 12px;
+    font-size: 12px;
     border-radius: 10px;
   }
 
@@ -1244,10 +1272,17 @@ html, body {
 
   .dev-modal-message {
     font-size: 11.5px;
+    margin-bottom: 14px;
+  }
+
+  .dev-modal-actions {
+    gap: 8px;
   }
 
   .dev-modal-btn {
-    padding: 9px 12px;
+    min-height: 38px;
+    padding: 8px 10px;
     font-size: 11px;
+    gap: 6px;
   }
 }
