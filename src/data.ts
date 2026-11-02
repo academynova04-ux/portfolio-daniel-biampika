@@ -18,6 +18,7 @@ export interface SkillCategory {
 export interface Project {
   id: number;
   category: string;
+  project_type?: 'saas' | 'showcase' | 'platform';
   slug: string;
   title: string;
   subtitle: string;
@@ -49,8 +50,10 @@ export interface OnlineItem {
 export interface ServiceItem {
   id: number;
   title: string;
+  badge?: string;
   description: string;
   items: string[];
+  projectType: string;
 }
 
 export interface ExpertiseItem {
@@ -66,11 +69,10 @@ export interface HeroQuote {
 }
 
 export const NAV_LINKS: [string, string][] = [
-  ['À propos', 'about'],
-  ['Projets', 'projects'],
-  ['Création visuelle', 'creation'],
   ['Services', 'services'],
-  ['Expertise', 'expertise'],
+  ['Projets réalisés', 'projects'],
+  ['Présentation', 'about'],
+  ['Création visuelle', 'creation'],
   ['Contact', 'contact'],
 ];
 
@@ -518,6 +520,18 @@ export const PROJECTS: Project[] = [
     link_url: "https://9np49d-1kzhminfm-intelligence-agentic-models.vercel.app/",
     status: "in-development",
     metadata: { technologies: ["React", "Hospitality", "Analytics", "SaaS"] }
+  },
+  {
+    id: 133,
+    category: "project",
+    slug: "faktelio",
+    title: "FAKTELIO",
+    subtitle: "SaaS · Facturation & Devis pour PME",
+    description: "Plateforme moderne de facturation, devis et gestion commerciale simplifiant les paiements, clients et ventes des PME et freelances.",
+    image_url: "/images/projects/faktelio.jpg",
+    link_url: "https://faktelio.vercel.app/",
+    status: "in-development",
+    metadata: { technologies: ["React", "SaaS", "Facturation", "Devis"] }
   }
 ];
 
@@ -646,33 +660,63 @@ export const ONLINE_PRESENCE: OnlineItem[] = [
 export const SERVICES: ServiceItem[] = [
   {
     id: 24,
-    title: "Développement web",
-    description: "Création de sites web modernes, rapides et responsives, conçus pour performer sur tous les écrans.",
-    items: ["Sites vitrines premium", "Applications React / Next.js", "Intégration APIs & bases de données"]
+    title: "Création de sites web",
+    badge: "Visibilité & Conversion",
+    description: "Sites vitrines, sites professionnels, pages de présentation et plateformes destinées aux entreprises, indépendants et organisations pour convaincre et convertir.",
+    items: [
+      "Sites vitrines professionnels & corporate",
+      "Pages de présentation de services & catalogues",
+      "Conception responsive optimisée mobile-first"
+    ],
+    projectType: "Création de site web"
   },
   {
     id: 25,
-    title: "UI/UX Design",
-    description: "Conception d’interfaces modernes et intuitives, au service d’une expérience simple et humaine.",
-    items: ["Maquettes Figma", "Design systems", "Prototypage interactif"]
+    title: "Développement d'applications web",
+    badge: "Performance & SaaS",
+    description: "Applications interactives, plateformes SaaS, tableaux de bord et outils métier adaptés aux processus et exigences de votre activité.",
+    items: [
+      "Applications web modernes (React, TypeScript)",
+      "Tableaux de bord & interfaces de suivi en temps réel",
+      "Intégration d'APIs & fonctionnalités sur-mesure"
+    ],
+    projectType: "Développement d'application web"
   },
   {
     id: 26,
-    title: "Solutions IA",
-    description: "Intégration d’outils et de fonctionnalités basées sur l’intelligence artificielle pour amplifier vos produits digitaux.",
-    items: ["Automatisation", "Prompt Engineering", "Workflows intelligents"]
+    title: "Solutions de gestion métier",
+    badge: "Efficacité & Automatisation",
+    description: "Applications de gestion personnalisées pour structurer vos opérations quotidiennes : facturation, devis, stocks, rendez-vous et budgets.",
+    items: [
+      "Logiciels de facturation & devis (ex. Faktelio)",
+      "Gestion de stocks, inventaires & suivi de chantiers",
+      "Prise de rendez-vous en ligne & plannings"
+    ],
+    projectType: "Solution de gestion sur-mesure"
   },
   {
     id: 27,
-    title: "Création digitale",
-    description: "Création de contenus et d’expériences digitales distinctives pour les marques et entrepreneurs.",
-    items: ["Direction artistique", "Contenus digitaux", "Identité visuelle"]
+    title: "Refonte & Amélioration de sites",
+    badge: "Modernisation & UX",
+    description: "Modernisation d'interface, adaptation stricte aux mobiles, fluidification des parcours et correction des problèmes d'affichage.",
+    items: [
+      "Refonte graphique & modernisation visuelle",
+      "Adaptation aux mobiles (320px à 430px+)",
+      "Optimisation de la vitesse et de l'expérience utilisateur"
+    ],
+    projectType: "Refonte & Amélioration de site"
   },
   {
     id: 28,
-    title: "Sites vitrines",
-    description: "Création de sites professionnels pour entreprises et entrepreneurs qui veulent une présence claire et premium.",
-    items: ["Positionnement de marque", "Pages de conversion", "SEO de base"]
+    title: "Conception d'interfaces UI/UX",
+    badge: "Ergonomie & Clarté",
+    description: "Organisation des contenus, parcours utilisateur intuitifs, responsive design et interfaces modernes cohérentes avec votre marque.",
+    items: [
+      "Architecture de l'information & hiérarchie visuelle",
+      "Design systems & chartes graphiques harmonieuses",
+      "Parcours orientés conversion & facilité d'usage"
+    ],
+    projectType: "Conception d'interfaces UI/UX"
   }
 ];
 

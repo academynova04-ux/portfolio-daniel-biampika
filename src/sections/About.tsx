@@ -7,19 +7,19 @@ export function About() {
   return (
     <section id="about" className="section about-section">
       <motion.div {...FADE_UP}>
-        <SectionLabel number="01">À propos</SectionLabel>
+        <SectionLabel number="01">Présentation & Parcours</SectionLabel>
       </motion.div>
       <div className="about-grid">
         <motion.div className="about-lead" {...FADE_UP}>
           <h2>
-            Entre <span>logique</span> et <span>émotion.</span>
+            Entre <span>rigueur technique</span> et <span>impact concret.</span>
           </h2>
           <p>{PROFILE.description}</p>
           <p style={{ marginTop: 16 }}>
-            Développeur Web · AI Enthusiast · UI/UX Designer · AI Content Creator. Je cultive un apprentissage continu à travers des projets personnels, la création digitale et l’expérimentation IA.
+            Développeur Web · Concepteur de Solutions Numériques · UI/UX Designer. Je conçois des produits numériques pensés pour durer, simples à utiliser et alignés avec les réalités de votre activité.
           </p>
           <a href="#contact" className="inline-link">
-            Travaillons ensemble <ArrowUpRight size={16} />
+            Discuter de votre projet <ArrowUpRight size={16} />
           </a>
         </motion.div>
         <motion.div

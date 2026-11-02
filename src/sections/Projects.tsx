@@ -1,10 +1,32 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ExternalLink, AlertCircle, X } from 'lucide-react';
+import { ExternalLink, AlertCircle, X, ChevronDown, ChevronUp } from 'lucide-react';
 import { SectionLabel } from '../components/SectionLabel';
 import { PROJECTS, FADE_UP, Project } from '../data';
 
+type CategoryFilter = 'all' | 'saas' | 'showcase' | 'platform' | 'in-dev';
+
+const SAAS_SLUGS = new Set([
+  'nexa-workspace', 'arcada-nova-gestion', 'koumou-hospitality', 'plenia-budget',
+  'nova-gestion-3meo', 'batistock-construction', 'planiqo-rendezvous', 'nova-rendezvous',
+  'pilotis-budget', 'nova-location-740q', 'nova-gestion-di4y', 'nova-gestion-congo',
+  'terranova-agricole', 'relchie-market', 'koumou-hospitality-management', 'faktelio'
+]);
+
+const SHOWCASE_SLUGS = new Set([
+  'mada-voyage', 'garagiste', 'batit-diaspora', 'arcada-cyclea',
+  'maman-plus', 'luxoria', 'autokongo-ftts', 'serein-sante',
+  'furniture-studio-premium', 'furniture-store'
+]);
+
+const PLATFORM_SLUGS = new Set([
+  'codenova-learning', 'arcada-codenova', 'arcada-invita', 'ruben-elenga',
+  'nova-code', 'junior-france-ngakosso', 'naya-invitations'
+]);
+
 export function Projects() {
+  const [activeFilter, setActiveFilter] = useState<CategoryFilter>('all');
+  const [showAll, setShowAll] = useState(false);
   const [pendingProject, setPendingProject] = useState<Project | null>(null);
 
   // Close modal with Escape key & lock body scroll while modal is active
@@ -27,10 +49,40 @@ export function Projects() {
     }
   }, [pendingProject]);
 
+  const filteredProjects = useMemo(() => {
+    switch (activeFilter) {
+      case 'saas':
+        return PROJECTS.filter((p) => SAAS_SLUGS.has(p.slug));
+      case 'showcase':
+        return PROJECTS.filter((p) => SHOWCASE_SLUGS.has(p.slug));
+      case 'platform':
+        return PROJECTS.filter((p) => PLATFORM_SLUGS.has(p.slug));
+      case 'in-dev':
+        return PROJECTS.filter((p) => p.status === 'in-development');
+      case 'all':
+      default:
+        return PROJECTS;
+    }
+  }, [activeFilter]);
+
+  const displayedProjects = useMemo(() => {
+    if (activeFilter === 'all' && !showAll) {
+      return filteredProjects.slice(0, 10);
+    }
+    return filteredProjects;
+  }, [filteredProjects, activeFilter, showAll]);
+
   const handleProjectClick = (e: React.MouseEvent, proj: Project) => {
     if (proj.status === 'in-development') {
       e.preventDefault();
       setPendingProject(proj);
+    }
+  };
+
+  const handleFilterChange = (filter: CategoryFilter) => {
+    setActiveFilter(filter);
+    if (filter !== 'all') {
+      setShowAll(true);
     }
   };
 
@@ -43,18 +95,70 @@ export function Projects() {
             Du concept au <em>pixel parfait.</em>
           </h2>
         </div>
-        <p>Des produits digitaux en ligne, pensés, dessinés et développés avec soin.</p>
+        <p>
+          Découvrez une sélection de {PROJECTS.length} réalisations concrètes : applications web interactives, outils métier et sites vitrines développés avec soin.
+        </p>
       </motion.div>
 
+      {/* Category filter tabs */}
+      <div className="projects-filter-bar" role="tablist" aria-label="Filtrer les projets par catégorie">
+        <button
+          type="button"
+          role="tab"
+          aria-selected={activeFilter === 'all'}
+          className={`filter-tab ${activeFilter === 'all' ? 'is-active' : ''}`}
+          onClick={() => handleFilterChange('all')}
+        >
+          Tous les projets <span>({PROJECTS.length})</span>
+        </button>
+        <button
+          type="button"
+          role="tab"
+          aria-selected={activeFilter === 'saas'}
+          className={`filter-tab ${activeFilter === 'saas' ? 'is-active' : ''}`}
+          onClick={() => handleFilterChange('saas')}
+        >
+          Applications & SaaS <span>(16)</span>
+        </button>
+        <button
+          type="button"
+          role="tab"
+          aria-selected={activeFilter === 'showcase'}
+          className={`filter-tab ${activeFilter === 'showcase' ? 'is-active' : ''}`}
+          onClick={() => handleFilterChange('showcase')}
+        >
+          Sites vitrines & Entreprises <span>(10)</span>
+        </button>
+        <button
+          type="button"
+          role="tab"
+          aria-selected={activeFilter === 'platform'}
+          className={`filter-tab ${activeFilter === 'platform' ? 'is-active' : ''}`}
+          onClick={() => handleFilterChange('platform')}
+        >
+          Plateformes & Éducation <span>(7)</span>
+        </button>
+        <button
+          type="button"
+          role="tab"
+          aria-selected={activeFilter === 'in-dev'}
+          className={`filter-tab ${activeFilter === 'in-dev' ? 'is-active' : ''}`}
+          onClick={() => handleFilterChange('in-dev')}
+        >
+          En cours de dév. <span>(17)</span>
+        </button>
+      </div>
+
       <div className="project-list project-list-modern">
-        {PROJECTS.map((proj, idx) => {
+        {displayedProjects.map((proj, idx) => {
+          const originalIdx = PROJECTS.findIndex((p) => p.id === proj.id);
           const isInDev = proj.status === 'in-development';
           return (
             <motion.article
               key={proj.id}
-              className={`project-card project-card-modern project-${idx + 1}`}
+              className={`project-card project-card-modern project-${(originalIdx >= 0 ? originalIdx : idx) + 1}`}
               {...FADE_UP}
-              transition={{ ...FADE_UP.transition, delay: (idx % 3) * 0.06 }}
+              transition={{ ...FADE_UP.transition, delay: (idx % 4) * 0.05 }}
             >
               <a
                 className="project-preview"
@@ -69,7 +173,9 @@ export function Projects() {
                   alt={`Aperçu du site ${proj.title}`}
                   loading="lazy"
                 />
-                <span className="project-index">{String(idx + 1).padStart(2, '0')}</span>
+                <span className="project-index">
+                  {String((originalIdx >= 0 ? originalIdx : idx) + 1).padStart(2, '0')}
+                </span>
                 {isInDev && (
                   <span className="project-status-badge">En cours</span>
                 )}
@@ -103,6 +209,29 @@ export function Projects() {
           );
         })}
       </div>
+
+      {/* Expand / Collapse Button when "all" is active */}
+      {activeFilter === 'all' && (
+        <div className="projects-expand-wrapper">
+          <button
+            type="button"
+            className="projects-expand-btn"
+            onClick={() => setShowAll((prev) => !prev)}
+            aria-expanded={showAll}
+          >
+            {showAll ? (
+              <>
+                Afficher moins de projets <ChevronUp size={16} />
+              </>
+            ) : (
+              <>
+                Afficher l'ensemble des {PROJECTS.length} projets ({PROJECTS.length - 10} de plus){' '}
+                <ChevronDown size={16} />
+              </>
+            )}
+          </button>
+        </div>
+      )}
 
       {/* Confirmation Modal for Projects in Development */}
       <AnimatePresence>

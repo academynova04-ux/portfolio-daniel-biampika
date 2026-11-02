@@ -26,16 +26,16 @@ export function Hero() {
         transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] as const }}
       >
         <p className="eyebrow">
-          <span>✦</span> Développeur créatif basé à Brazzaville
+          <span>✦</span> Daniel Biampika · Développeur web & Concepteur de solutions numériques
         </p>
         <h1 className="hero-rotator" aria-live="polite">
           <AnimatePresence mode="wait">
             <motion.span
               key={quoteIndex}
-              initial={{ opacity: 0, y: 18 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -18 }}
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] as const }}
+              exit={{ opacity: 0, y: -16 }}
+              transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] as const }}
             >
               {quote.line1}
               <br />
@@ -43,38 +43,45 @@ export function Hero() {
             </motion.span>
           </AnimatePresence>
         </h1>
+        <p className="hero-value-statement">
+          « Je conçois des sites web et des applications modernes pour transformer vos idées en <b>solutions numériques concrètes</b>. »
+        </p>
         <p className="hero-intro">
-          Je conçois des identités visuelles fortes, des produits web solides et des interfaces qui font la différence.
+          Sites vitrines professionnels, plateformes métier sur-mesure et interfaces fluides pensées pour valoriser votre expertise et convertir vos visiteurs en clients.
         </p>
         <div className="hero-expertises-bar">
           <span className="expertise-pill">
-            <CodeXml size={13} /> Développeur Web
+            <CodeXml size={13} /> Sites Web Vitrines & Corporate
           </span>
           <span className="expertise-pill">
-            <Palette size={13} /> Designer UI/UX & Branding
+            <Palette size={13} /> Applications & Outils de Gestion
           </span>
           <span className="expertise-pill">
-            <Sparkles size={13} /> Spécialiste IA
+            <Sparkles size={13} /> Interfaces UI/UX & Responsive
           </span>
           <span className="expertise-pill">
-            <PenTool size={13} /> Créateur Digital
+            <PenTool size={13} /> Refonte & Modernisation
           </span>
         </div>
         <div className="hero-proof">
           <span>
-            <b>+{PROJECTS.length}</b> Projets réalisés
+            <b>+{PROJECTS.length}</b> Réalisations en ligne
           </span>
           <i />
           <span>
-            <b>Expertise</b> informatique
+            <b>Solutions</b> sur-mesure
+          </span>
+          <i />
+          <span>
+            <b>Brazzaville</b> & International
           </span>
         </div>
         <div className="hero-cta">
           <a className="btn-primary" href="#projects">
-            Voir mes projets <ArrowDownRight size={18} />
+            Découvrir mes réalisations <ArrowDownRight size={18} />
           </a>
           <a className="btn-text contact-link" href="#contact">
-            Me contacter <ArrowUpRight size={17} />
+            Discuter de mon projet <ArrowUpRight size={17} />
           </a>
         </div>
       </motion.div>
@@ -86,7 +93,7 @@ export function Hero() {
       >
         <div className="portrait-frame">
           <div className="portrait-shape" />
-          <img src={PROFILE.image} alt="Daniel Biampika, développeur et designer à Brazzaville" />
+          <img src={PROFILE.image} alt="Daniel Biampika, développeur web et concepteur de solutions numériques" />
         </div>
       </motion.div>
     </section>
